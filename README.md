@@ -2,7 +2,7 @@
 
 Site-side SDK for [aramend](https://github.com/aramb-dev/aramend): config types, a typed content client, the `aramend push` CLI and webhook verification.
 
-ESM only. The client and webhook helpers use `fetch` and Web Crypto, so they run on Node 20+, edge runtimes and workers.
+ESM only. The client and webhook helpers use `fetch` and Web Crypto, so they run on Node 20.12+, edge runtimes and workers.
 
 ## Define fields
 
@@ -45,7 +45,7 @@ import type config from "./aramend.config"
 const cms = createClient<typeof config>({
   url: process.env.ARAMEND_URL!,
   readKey: process.env.ARAMEND_READ_KEY!,
-  fetchOptions: { next: { tags: ["aramend"] } }, // optional, Next.js
+  fetchOptions: { next: { tags: ["aramend"] } }, // optional; with cacheComponents, use cacheTag("aramend") in a "use cache" scope instead
 })
 
 const { data } = await cms.getSingleton("settings") // data: { title: string; logo: ImageValue | null } | null
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
     secret: process.env.ARAMEND_WEBHOOK_SECRET!,
   })
   if (!result.ok) return new Response(result.reason, { status: 401 })
-  revalidateTag("aramend")
+  revalidateTag("aramend", "max")
   return Response.json({ revalidated: true })
 }
 ```
