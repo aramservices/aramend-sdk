@@ -1,6 +1,6 @@
 # @aramend/sdk
 
-Site-side SDK for [aramend](https://github.com/aramb-dev/aramend): config types, a typed content client, the `aramend push` CLI and webhook verification.
+Site-side SDK for aramend, a schema-as-code headless CMS: config types, a typed content client, the `aramend push` CLI and webhook verification.
 
 ESM only. The client and webhook helpers use `fetch` and Web Crypto, so they run on Node 20.12+, edge runtimes and workers.
 
@@ -79,3 +79,7 @@ It checks `x-aramend-signature` (an HMAC-SHA256 of `"<timestamp>.<raw body>"`) w
 ## Schema tooling
 
 `@aramend/sdk/schema` exports `parseSiteConfig`, `diffSchemas`, `validateEntry`, asset rules and walkers. The CMS uses these too.
+
+## License
+
+MIT

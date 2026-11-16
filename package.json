@@ -2,7 +2,22 @@
   "name": "@aramend/sdk",
   "version": "0.1.0",
   "description": "Field types, typed content client, push CLI and webhook verification for aramend",
-  "license": "UNLICENSED",
+  "keywords": [
+    "aramend",
+    "cms",
+    "headless-cms",
+    "schema-as-code",
+    "content-client",
+    "sdk"
+  ],
+  "license": "MIT",
+  "author": "Abdur-Rahmān Bilāl (https://aramb.dev)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aramservices/aramend-sdk.git"
+  },
+  "homepage": "https://github.com/aramservices/aramend-sdk#readme",
+  "bugs": "https://github.com/aramservices/aramend-sdk/issues",
   "type": "module",
   "sideEffects": false,
   "engines": {
@@ -11,6 +26,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "aramend": "./dist/cli.js"
   },
