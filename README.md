@@ -1,4 +1,4 @@
-# @aramend/sdk
+# @aramservices/aramend
 
 Site-side SDK for aramend, a schema-as-code headless CMS: config types, a typed content client, the `aramend push` CLI and webhook verification.
 
@@ -8,7 +8,7 @@ ESM only. The client and webhook helpers use `fetch` and Web Crypto, so they run
 
 ```ts
 // aramend.config.ts
-import { defineConfig } from "@aramend/sdk"
+import { defineConfig } from "@aramservices/aramend"
 
 export default defineConfig({
   site: "my-site",
@@ -39,7 +39,7 @@ Exits non-zero on invalid configs (422), breaking changes without `--force` (409
 ## Read content
 
 ```ts
-import { createClient } from "@aramend/sdk/client"
+import { createClient } from "@aramservices/aramend/client"
 import type config from "./aramend.config"
 
 const cms = createClient<typeof config>({
@@ -62,7 +62,7 @@ API errors throw `AramendError` with `status`, `code` and `details`.
 ```ts
 // app/api/revalidate/route.ts
 import { revalidateTag } from "next/cache"
-import { verifyWebhookRequest } from "@aramend/sdk/webhook"
+import { verifyWebhookRequest } from "@aramservices/aramend/webhook"
 
 export async function POST(request: Request) {
   const result = await verifyWebhookRequest(request, {
@@ -78,7 +78,7 @@ It checks `x-aramend-signature` (an HMAC-SHA256 of `"<timestamp>.<raw body>"`) w
 
 ## Schema tooling
 
-`@aramend/sdk/schema` exports `parseSiteConfig`, `diffSchemas`, `validateEntry`, asset rules and walkers. The CMS uses these too.
+`@aramservices/aramend/schema` exports `parseSiteConfig`, `diffSchemas`, `validateEntry`, asset rules and walkers. The CMS uses these too.
 
 ## License
 

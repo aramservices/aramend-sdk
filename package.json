@@ -1,5 +1,5 @@
 {
-  "name": "@aramend/sdk",
+  "name": "@aramservices/aramend",
   "version": "0.1.0",
   "description": "Field types, typed content client, push CLI and webhook verification for aramend",
   "keywords": [
