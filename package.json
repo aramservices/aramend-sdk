@@ -1,0 +1,57 @@
+{
+  "name": "@aramend/sdk",
+  "version": "0.1.0",
+  "description": "Field types, typed content client, push CLI and webhook verification for aramend",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "aramend": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    },
+    "./schema": {
+      "types": "./dist/schema.d.ts",
+      "default": "./dist/schema.js"
+    },
+    "./webhook": {
+      "types": "./dist/webhook.d.ts",
+      "default": "./dist/webhook.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "prepack": "pnpm run build",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format --check .",
+    "ci": "biome ci ."
+  },
+  "packageManager": "pnpm@11.17.0",
+  "dependencies": {
+    "jiti": "^2.7.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.2",
+    "@types/node": "^24.19.2",
+    "typescript": "^7.0.2"
+  }
+}
